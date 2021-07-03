@@ -69,7 +69,7 @@ span.navbar-toggler-icon {
   padding: 0;
 }
 .card-image{
-  transition: width 5s, height 5s;
+  transition: width 3s, height 2s, transform 3s;
 }
 .card-image:hover {
   width: 105%;
