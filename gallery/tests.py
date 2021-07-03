@@ -94,3 +94,12 @@ class TestImageClass(TestCase):
     images = Image.objects.all()
     self.assertTrue(len(images)==0)
 
+  def test_update_method(self):
+    self.new_image.save_image()
+
+    images = Image.objects.filter(image_name = 'BMW red Coupe')
+
+    images.update(image_name = 'Red BMW')
+    self.new_image.refresh_from_db()
+
+    self.assertEqual(self.new_image.image_name, 'Red BMW')
