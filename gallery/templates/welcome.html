@@ -1,6 +1,57 @@
 {%extends 'base.html'%}
+{%load bootstrap_icons %}
 
 {%block content%}
-<h1>{{title}}</h1>
+<div class="banner text-center">
+  <div id="bannerContent">
+    <h5 class="subtitle">{%bs_icon 'dash'%}Best Image Collection {%bs_icon 'dash'%}</h5>
+    <h1 class="main_title">SUE GALLERY</h1>
+    <p class="text_p">Photography, The best moment in still. <br> Here are is a sample of the best Images</p>
+  </div>
+</div>
+<div class="sample_gallery row">
+  <div id="row1">
+    <div class="card short col-md-4">
+      <div class="card-image">
+        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+      </div>
+      <h3 class="card-header text-center">Blue Waters</h3>
+      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+    </div>
+    <div class="card long col-md-4">
+      <div class="card-image">
+        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+      </div>
+      <h3 class="card-header text-center">Blue Waters</h3>
+      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+    </div>
+    <div class="card short col-md-4">
+      <div class="card-image">
+        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+      </div>
+      <h3 class="card-header text-center">Blue Waters</h3>
+      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+    </div>
+  </div>
+  <div id="row2">
+    <!--add loop here-->
+    <div class="card short col-md-4">
+      <div class="card-image">
+        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+      </div>
+      <h3 class="card-header text-center">Blue Waters</h3>
+      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+    </div>
+  </div>
+</div>
+<div class="slider text-center">
+  <h5 class="pics_title">What we have</h5>
+  <div class="pics" height='210px'>
+    <!--Add loop here-->
+    <img src="" alt="" width="100px" height="100px">
+  </div>
+  <h1>{{title}}</h1>
+  <p class="subtitle">BEST COLLECTION</p>
+</div>
 
 {%endblock%}
