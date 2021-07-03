@@ -13,21 +13,21 @@
   <div id="row1">
     <div class="card short col-md-4">
       <div class="card-image">
-        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+        <img src="{{image1.image_url.url}}" alt="image Gallery" width="100%">
       </div>
-      <h3 class="card-header text-center">Blue Waters</h3>
+      <h3 class="card-header text-center bg-light">Blue Waters</h3>
       <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
     </div>
     <div class="card long col-md-4">
       <div class="card-image">
-        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+        <img src="{{image2.image_url.url}}" alt="image Gallery" width="100%">
       </div>
       <h3 class="card-header text-center">Blue Waters</h3>
       <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
     </div>
     <div class="card short col-md-4">
       <div class="card-image">
-        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+        <img src="{{image3.image_url.url}}" alt="image Gallery" width="100%">
       </div>
       <h3 class="card-header text-center">Blue Waters</h3>
       <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
@@ -35,20 +35,33 @@
   </div>
   <div id="row2">
     <!--add loop here-->
+    {%for item in images%}
     <div class="card short col-md-4">
-      <div class="card-image">
-        <img src="../static/images/bluewaters.jpeg" alt="image Gallery" width="100%">
+      <div class="card-image" style="background-image: url('{{item.image_url.url}}');">
+        <div class="with_fore">
+          <p class="image_fore text-center">
+            {%bs_icon 'search'%}
+          </p>
+        </div>
       </div>
-      <h3 class="card-header text-center">Blue Waters</h3>
-      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+      <h3 class="card-header text-center">{{item.image_name}}</h3>
+      <p class="card-text text-center">{{item.image_description}}</p>
+      <div class="card-footer">
+        <button class="btn-outline-success">{{item.category}}</button>
+        <button class="btn-success">{{item.location_taken}}</button>
+      </div>
     </div>
+    {%endfor%}
   </div>
+
 </div>
 <div class="slider text-center">
   <h5 class="pics_title">What we have</h5>
   <div class="pics" height='210px'>
     <!--Add loop here-->
-    <img src="" alt="" width="100px" height="100px">
+    {%for allimage in allimages%}
+    <img class='image_rotate' src="{{allimage.image_url.url}}" alt="images existing" width="100px" height="100px">
+    {%endfor%}
   </div>
   <h1>{{title}}</h1>
   <p class="subtitle">BEST COLLECTION</p>
