@@ -20,13 +20,14 @@ class TestLocation(TestCase):
     self.assertTrue(len(locations)>0)
   
   #test update method
-  # def test_update_location(self):
-  #   self.new_location.save()
-  #   Location.objects.filter(pk = 1).update(location_name = 'Manyatta')
-    
-  #   self.new_location.refresh_from_db()
+  def test_update_location(self):
+    self.new_location.save_location()
+    locations = Location.objects.filter(location_name = 'Kibra')
+    locations.update(location_name = 'Manyatta')
 
-  #   self.assertTrue(self.new_location == 'Manyatta')
+    self.new_location.refresh_from_db()
+
+    self.assertEqual(self.new_location.location_name, 'Manyatta')
 
   def test_delete_location(self):
     self.new_location.save_location()
@@ -50,11 +51,13 @@ class TestCategories(TestCase):
     self.assertTrue(len(categories)>0)
   
   #test update method
-  # def test_update_category(self):
-  #   self.new_category.save()
-  #   Categories.objects.filter(category_name = 'E-bike').update(category_name = 'Nature')
-  #   self.new_category.refresh_from_db()
-  #   self.assertTrue(self.new_category == 'Nature')
+  def test_update_category(self):
+    self.new_category.save_category()
+    new_obj = Categories.objects.filter(category_name = 'E-bike')
+    new_obj.update(category_name = 'Nature')
+
+    self.new_category.refresh_from_db()
+    self.assertEqual(self.new_category.category_name, 'Nature')
 
   def test_delete_category(self):
     self.new_category.save_category()
