@@ -53,10 +53,11 @@ class TestCategories(TestCase):
   #test update method
   def test_update_category(self):
     self.new_category.save_category()
-    new_obj = Categories.objects.filter(category_name = 'E-bike')
-    new_obj.update(category_name = 'Nature')
+    categories = Categories.objects.filter(category_name = 'E-bikes')
+    categories.update(category_name = 'Nature')
 
     self.new_category.refresh_from_db()
+
     self.assertEqual(self.new_category.category_name, 'Nature')
 
   def test_delete_category(self):
