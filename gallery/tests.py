@@ -62,4 +62,27 @@ class TestCategories(TestCase):
     categories = Categories.objects.all()
     self.assertTrue(len(categories)==0)
 
+class TestImageClass(TestCase):
+  #set up instance
+  def setUp(self):
+    self.new_image = Image(image_url = '/gallery/static/images/bmw.jpeg',image_name = 'BMW red Coupe',image_description = 'Red Coupe BMW model 2020')
+
+  #test instance
+  def test_instance_created(self):
+    self.assertTrue(isinstance(self.new_image, Image))
+
+  #save image
+  def test_save_image(self):
+    self.new_location = Location(location_name = 'Kibra')
+    self.new_location.save()
+
+    self.new_category = Categories(category_name = 'E-bikes')
+    self.new_category.save()
+
+    self.new_image = Image(image_url = '/gallery/static/images/bmw.jpeg',image_name = 'BMW red Coupe',image_description = 'Red Coupe BMW model 2020', location_taken = self.new_location, category = self.new_category)
+    self.new_image.save_image()
+
+    images = Image.objects.all()
+
+    self.assertTrue(len(images)>0)
 
