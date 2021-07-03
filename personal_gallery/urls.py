@@ -17,9 +17,13 @@ from django.contrib import admin
 from gallery import views
 from django.urls import path
 from django.urls.conf import include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'',views.index, name = 'home'),
     path(r'^gallery/$', include('gallery.urls'))
 ]
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
