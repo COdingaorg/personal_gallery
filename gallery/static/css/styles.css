@@ -1,7 +1,13 @@
+@font-face {
+  font-family: poppins;
+  src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: poppins,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif sans-serif;
 }
 
 /*navbar and contents styling*/
@@ -45,7 +51,9 @@ span.navbar-toggler-icon {
   background-image: url('../images/greemountains.jpeg');
   color: white;
   height: 80vh;
-  margin-top: -100px;
+  margin-top: -15vh;
+  margin-bottom: 5vh;
+  background-position: center;
 }
 
 /*styling banner and sample gallery*/
@@ -58,15 +66,22 @@ span.navbar-toggler-icon {
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.4)
 }
-
+.main_title{
+  font-size: 4em;
+}
 .sample_gallery {
   width: 100vw;
   padding: auto;
+}
+.text_p{
+  font-size: 1.5em;
+  text-align: center;
 }
 
 /*cards styling */
 .cards {
   padding: 0;
+  border-radius: 6px;
 }
 .card-image{
   transition: width 3s, height 2s, transform 3s;
