@@ -1,4 +1,3 @@
-from gallery.views import search_images
 from django.db import models
 import datetime as dt
 
@@ -45,7 +44,16 @@ class Image(models.Model):
     self.delete()
 
   @classmethod
-  def search_by_category(cls, search_term):
-    results = cls.objects.filter(category__icontains = search_term)
+  def search_by_category(cls, search_trm):
+    search_term = search_trm.capitalize()
+    cat_id = (Categories.objects.get(category_name = search_term)).id
+    results = cls.objects.filter(category = cat_id)
 
     return results
+    if results:
+      pass
+
+    else:
+      categories_avl = Categories.objects.all()
+      return categories_avl
+

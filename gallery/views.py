@@ -41,7 +41,15 @@ def navbar_categories_show(request):
   return render (request,'navbar.html', {'all_items':all_items})
 
 def search_images(request):
-  
   title = 'Category search results'
+  if 'category_image' in request.GET and request.GET['category_image']:
+    search_term = request.GET.get('category_image')
+    message = f'{search_term}'
+    result_images = Image.search_by_category(search_term)
+    
+    return render(request, 'search_results.html', {'message':message,'title':title, 'result_images':result_images})
 
-  return render(request, 'search_results.html', {'title':title})
+  else:
+    message = 'You have not searched for anything'
+    return render(request, 'search_results.html', {'message':message, 'title':title})
+  
