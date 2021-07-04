@@ -1,5 +1,9 @@
+from django.core import exceptions
+from django.core.checks.messages import Error
 from django.db import models
 import datetime as dt
+
+from django.http.response import Http404
 
 # Create your models here.
 class Location(models.Model):
@@ -46,14 +50,12 @@ class Image(models.Model):
   @classmethod
   def search_by_category(cls, search_trm):
     search_term = search_trm.capitalize()
-    cat_id = (Categories.objects.get(category_name = search_term)).id
-    results = cls.objects.filter(category = cat_id)
+    try:
+      cat_name = (Categories.objects.get(category_name = search_term))
+      cat_id = cat_name.id
+      results = cls.objects.filter(category = cat_id)
 
-    return results
-    if results:
-      pass
-
-    else:
-      categories_avl = Categories.objects.all()
-      return categories_avl
-
+      return results
+    except:
+      raise Http404('The category searched Does not exist',
+                    'Go back for available categories')
