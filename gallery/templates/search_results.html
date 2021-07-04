@@ -19,6 +19,10 @@
   {%endfor%}
 
 </div>
+<!--Available categories-->
+{%for cat in categories%}
+<button class="btn-warning">{{cat.category_name}}</button>
+{%endfor%}
 <!--search reslts-->
 <h2 class="text-center">Found {{result_images|length}} results for {{message}}</h2>
 <div id="row2">

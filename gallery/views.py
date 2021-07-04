@@ -47,7 +47,9 @@ def search_images(request):
     message = f'{search_term}'
     result_images = Image.search_by_category(search_term)
     
-    return render(request, 'search_results.html', {'message':message,'title':title, 'result_images':result_images})
+    categories = Categories.objects.all()
+
+    return render(request, 'search_results.html', {'message':message,'title':title, 'result_images':result_images, 'categories':categories})
 
   else:
     message = 'You have not searched for anything'
