@@ -1,10 +1,23 @@
-<div class="card short col-md-4">
-  <div class="card-image" style="background-image: url('{{item.image_url.url}}');">
-  </div>
-  <h3 class="card-header text-center">{{single_image.image_name}}</h3>
-  <p class="card-text text-center">{{single_image.image_description}}</p>
-  <div class="card-footer">
-    <button class="btn-outline-success">{{single_image.category}}</button>
-    <button class="btn-success">{{single_image.location_taken}}</button>
+{%extends 'base.html'%}
+{%block content%}
+
+<div class="card single_image">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="card-image" src="{{single_image.image_url.url}}" alt="Image View" width="100%" height="100%" >
+    </div>
+    <div class="col-md-5">
+      <h3 class="card-header text-center">{{single_image.image_name}}</h3>
+      <p class="card-text text-center">{{single_image.image_description}}</p>
+      <div class="card-footer">
+        <button class="btn-outline-success">{{single_image.category}}</button>
+        <button class="btn-success align-right">{{single_image.location_taken}}</button>
+      </div>
+      <div class="card-link">
+        <p class="bg-primary text-center width-4">{{single_image.date_taken}}</p>
+        <button class="btn-light text-center fa fa-copy">&sharp; Copy Link</span>
+      </div>
+    </div>
   </div>
 </div>
+{%endblock%}

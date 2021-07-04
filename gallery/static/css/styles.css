@@ -93,6 +93,7 @@ span.navbar-toggler-icon {
 .cards {
   padding: 0;
   border-radius: 6px;
+  height: 40vh;
 }
 div.card-image{
   transition: width 3s, height 2s, transform 3s;
@@ -126,6 +127,13 @@ div.card-image{
 .card-image:hover {
   width: 105%;
   cursor: pointer;
+}
+.single_image{
+  height: 80vh;
+}
+.single_image>.card-image{
+  overflow: hidden;
+  border: 1px solid black;
 }
 @keyframes rotate {
   0%{rotate: 30deg;}

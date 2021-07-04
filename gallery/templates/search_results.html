@@ -30,7 +30,7 @@
   {%if result_images%}
   {%for item in result_images%}
   <div class="card short col-md-4">
-    <a href="">
+    <a href="{{item.image_url.url}}">
       <div class="card-image" style="background-image: url('{{item.image_url.url}}');">
         <div class="with_fore">
           <p class="image_fore text-center">

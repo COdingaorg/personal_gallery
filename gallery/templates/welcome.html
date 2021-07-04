@@ -13,21 +13,27 @@
   <div id="row1">
     <div class="card short col-md-4">
       <div class="card-image">
-        <img src="{{image1.image_url.url}}" alt="image Gallery" width="100%">
+        <a href="{% url 'single_image' image1.id %}">
+          <img src="{{image1.image_url.url}}" alt="image Gallery" width="100%">
+        </a>
       </div>
       <h3 class="card-header text-center bg-light">Blue Waters</h3>
       <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
     </div>
     <div class="card long col-md-4">
       <div class="card-image">
-        <img src="{{image2.image_url.url}}" alt="image Gallery" width="100%">
+        <a href="{% url 'single_image' image2.id %}">
+          <img src="{{image2.image_url.url}}" alt="image Gallery" width="100%">
+        </a>
       </div>
       <h3 class="card-header text-center">Blue Waters</h3>
       <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
     </div>
     <div class="card short col-md-4">
       <div class="card-image">
-        <img src="{{image3.image_url.url}}" alt="image Gallery" width="100%">
+        <a href="{% url 'single_image' image3.id %}">
+          <img src="{{image3.image_url.url}}" alt="image Gallery" width="100%">
+        </a>
       </div>
       <h3 class="card-header text-center">Blue Waters</h3>
       <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
@@ -37,7 +43,7 @@
     <!--add loop here-->
     {%for item in images%}
     <div class="card short col-md-4">
-      <a href="">
+      <a href="{% url 'single_image' item.id %}">
         <div class="card-image" style="background-image: url('{{item.image_url.url}}');">
           <div class="with_fore">
             <p class="image_fore text-center">

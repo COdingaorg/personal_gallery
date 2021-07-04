@@ -24,7 +24,7 @@
   <!--add loop here-->
   {%for item in images%}
   <div class="card short col-md-4">
-    <a href="">
+    <a href="{% url 'single_image' item.id %}">
       <div class="card-image" style="background-image: url('{{item.image_url.url}}');">
         <div class="with_fore">
           <p class="image_fore text-center">
