@@ -1,3 +1,4 @@
+from django.http.response import Http404
 from django.shortcuts import render
 from .models import Image, Categories, Location
 
@@ -16,3 +17,11 @@ def index(request):
 
 def gallery_disp(request):
   pass
+
+def single_image(request, image_id):
+  try:
+    single_image = Image.objects.get(id=image_id)
+  except:
+    raise Http404
+
+  return render(request, 'single_img.html', {'single_image': single_image} )
