@@ -75,4 +75,12 @@
   <p class="subtitle">BEST COLLECTION</p>
 </div>
 
+<script type="text/javascript" src="">
+$(document).ready(function(){
+  $('#create-book').modalForm({
+    formURL:"{% url 'create_book' %}"
+  });
+});
+</script>
+
 {%endblock%}
