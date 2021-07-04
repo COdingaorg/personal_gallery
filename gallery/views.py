@@ -1,3 +1,6 @@
+from os import register_at_fork
+from django.views.generic import UpdateView, ListView
+import pyperclip
 from django.http.response import Http404
 from django.shortcuts import render
 from .models import Image, Categories, Location
@@ -34,12 +37,25 @@ def gallery_disp(request):
     return render (request, 'gallery_display.html', {'message':message,'title':title, 'images':images, 'categories':categories, 'locations':locations})
 
 def single_image(request, image_id):
-  try:
-    single_image = Image.objects.get(id=image_id)
-  except:
-    raise Http404
+  if 'link' in request.GET and request.GET['link']:
+    link_copy = request.GET.get('link')
+    pyperclip.copy(link_copy)
+    messageSucc = 'Link Copied!'
+    
+    try:
+      single_image = Image.objects.get(id=image_id)
+    except:
+      raise Http404('Image Not Available')
+    
+    return render(request, 'single_img.html', {'single_image': single_image, 'message':messageSucc})
 
-  return render(request, 'single_img.html', {'single_image': single_image} )
+  else:
+    try:
+      single_image = Image.objects.get(id=image_id)
+    except:
+      raise Http404
+
+    return render(request, 'single_img.html', {'single_image': single_image} )
 
 def navbar_categories_show(request):
   all_items = Categories.objects.all()
@@ -60,4 +76,3 @@ def search_images(request):
   else:
     message = 'You have not searched for anything'
     return render(request, 'search_results.html', {'message':message, 'title':title})
-  

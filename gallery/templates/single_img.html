@@ -15,7 +15,13 @@
       </div>
       <div class="card-link">
         <p class="bg-primary text-center width-4">{{single_image.date_taken}}</p>
-        <button class="btn-light text-center fa fa-copy">&sharp; Copy Link</span>
+
+        <!--copy link-->
+        <form class="navbar-form" role="search" action="{% url 'single_image' single_image.id %}">
+          <input type="text" class="hidden" name='link' value='{{single_image.image_url.url}}'>
+          <button class="btn-light" type="submit">&sharp; Copy Link</button><p class="alert alert-info">{{message}}</p>
+          </form>
+        
       </div>
     </div>
   </div>
