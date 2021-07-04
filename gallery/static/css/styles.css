@@ -151,6 +151,8 @@ button{
 .cat_buttons{
   margin: 5px;
   padding: 0vh 2vw 0vh 2vw;
+  display: flex;
+  flex-direction: row;
 }
 .cat_buttons>button{
   margin: 0vh 1vw 0vh 1vw;

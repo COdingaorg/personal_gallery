@@ -39,3 +39,9 @@ def navbar_categories_show(request):
   all_items = Categories.objects.all()
 
   return render (request,'navbar.html', {'all_items':all_items})
+
+def search_images(request):
+  
+  title = 'Category search results'
+
+  return render(request, 'search_results.html', {'title':title})
