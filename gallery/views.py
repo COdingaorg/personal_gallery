@@ -16,7 +16,12 @@ def index(request):
   'image1':image1, 'image2':image2, 'image3':image3})
 
 def gallery_disp(request):
-  pass
+  title = 'Gallery Display'
+  images = Image.objects.all()
+
+  location_images = Image.objects.filter(location_taken=2)
+  category_images = Image.objects.filter(category = 3)
+  return render (request, 'gallery_display.html', {'title':title, 'images':images, 'location_images':location_images, 'category_images':category_images})
 
 def single_image(request, image_id):
   try:

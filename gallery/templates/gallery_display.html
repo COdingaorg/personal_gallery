@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{% load bootstrap_icons%}
+
+{%block content%}
+<div class="banner2 text-center">
+  <div id="bannerContent2">
+    <h5 class="subtitle"></h5>
+    <h2 class="main_title">SMILE VIEW</h2>
+    <p class="text_p">Filter by Location or category</p>
+  </div>
+</div>
+
+<!--images looped-->
+<div id="row2">
+  <!--add loop here-->
+  {%for item in images%}
+  <div class="card short col-md-4">
+    <a href="">
+      <div class="card-image" style="background-image: url('{{item.image_url.url}}');">
+        <div class="with_fore">
+          <p class="image_fore text-center">
+            {%bs_icon 'search'%}
+          </p>
+        </div>
+      </div>
+    </a>
+    <h3 class="card-header text-center">{{item.image_name}}</h3>
+    <p class="card-text text-center">{{item.image_description}}</p>
+    <div class="card-footer">
+      <button class="btn-outline-success">{{item.category}}</button>
+      <button class="btn-success">{{item.location_taken}}</button>
+      <button class="btn-outline-warning text-right">{{item.date_taken}}</button>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+{%endblock%}
