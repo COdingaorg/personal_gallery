@@ -17,15 +17,21 @@ def index(request):
 
 def gallery_disp(request):
   title = 'Gallery Display'
-  images = Image.objects.all()
+  if 'location' in request.GET and request.GET['location']:
+    search_word = request.GET.get('location')
+    message = f'Filtered by Location : {search_word}'
+    location_images = Image.filter_by_location(search_word)
 
-  location_images = Image.objects.filter(location_taken=2)
-  category_images = Image.objects.filter(category = 3)
+    return render(request, 'gallery_display.html', {'message':message, 'images':location_images})
 
-  categories = Categories.objects.all()
-  locations = Location.objects.all()
-  return render (request, 'gallery_display.html', {'title':title, 'images':images, 'location_images':location_images, 
-  'category_images':category_images, 'categories':categories, 'locations':locations})
+  else:
+
+    images = Image.objects.all()
+    message = 'Not Filtered'
+
+    categories = Categories.objects.all()
+    locations = Location.objects.all()
+    return render (request, 'gallery_display.html', {'message':message,'title':title, 'images':images, 'categories':categories, 'locations':locations})
 
 def single_image(request, image_id):
   try:

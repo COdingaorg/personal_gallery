@@ -6,18 +6,18 @@
   <div id="bannerContent2">
     <h5 class="subtitle"></h5>
     <h2 class="main_title">SMILE VIEW</h2>
-    <p class="text_p">Filter by Location or category</p>
+    <p class="text_p">Filter by Location or Search category</p>
   </div>
 </div>
 <!--categories-->
 <div class="cat_buttons">
   {%for loc in locations%}
-  <form class="navbar-form" role="search" action="{% url 'search_images' %}"></form>
+  <form class="navbar-form" role="search" action="{% url 'gallery_disp' %}">
   <input type="text" class="hidden" name='location' value='{{loc.location_name}}'>
   <button class="btn-outline-success" type="submit">{{loc.location_name}}</button>
   </form>
   {%endfor%}
-
+<h4 class="text-center">{{message}}</h4>
 </div>
 <!--images looped-->
 <div id="row2">

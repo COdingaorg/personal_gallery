@@ -59,3 +59,10 @@ class Image(models.Model):
     except:
       raise Http404('The category searched Does not exist',
                     'Go back for available categories')
+
+  @classmethod
+  def filter_by_location(cls, search_wrd):
+    location_nm = (Location.objects.get(location_name = search_wrd))
+    loc_id = location_nm.id
+    results = cls.objects.filter(location_taken = loc_id)
+    return results
