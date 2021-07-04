@@ -50,12 +50,12 @@ span.navbar-toggler-icon {
   width: 98vw;
   color: white;
   margin-top: -15vh;
-  margin-bottom: 5vh;
   background-position: center;
 }
 .banner{
   background-image: url('../images/greemountains.jpeg');
   height: 80vh;
+  margin-bottom: 5vh;
 }
 .banner2{
   background-image: url('../images/bmw_headlights_lights_137326_1280x720.jpg');
@@ -147,6 +147,15 @@ div.card-image{
 }
 button{
   border-radius: 4px;
+}
+.cat_buttons{
+  margin: 5px;
+  padding: 0vh 2vw 0vh 2vw;
+}
+.cat_buttons>button{
+  margin: 0vh 1vw 0vh 1vw;
+  padding: 0.5vh 2vw 0.5vh 2vw;
+  font-size: 1.2em;
 }
 
 

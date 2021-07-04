@@ -8,9 +8,9 @@ def index(request):
   images = Image.objects.all()[3:9]
   allimages = Image.objects.all()
 
-  image1 = Image.objects.get(pk = 1)
-  image2 = Image.objects.get(pk = 2)
-  image3 = Image.objects.get(pk = 3)
+  image1 = Image.objects.get(id = 1)
+  image2 = Image.objects.get(id = 2)
+  image3 = Image.objects.get(id = 3)
 
   return render(request, 'welcome.html', {'title':title, 'images':images, 'allimages':allimages,
   'image1':image1, 'image2':image2, 'image3':image3})
@@ -21,7 +21,11 @@ def gallery_disp(request):
 
   location_images = Image.objects.filter(location_taken=2)
   category_images = Image.objects.filter(category = 3)
-  return render (request, 'gallery_display.html', {'title':title, 'images':images, 'location_images':location_images, 'category_images':category_images})
+
+  categories = Categories.objects.all()
+  locations = Location.objects.all()
+  return render (request, 'gallery_display.html', {'title':title, 'images':images, 'location_images':location_images, 
+  'category_images':category_images, 'categories':categories, 'locations':locations})
 
 def single_image(request, image_id):
   try:
@@ -30,3 +34,8 @@ def single_image(request, image_id):
     raise Http404
 
   return render(request, 'single_img.html', {'single_image': single_image} )
+
+def navbar_categories_show(request):
+  all_items = Categories.objects.all()
+
+  return render (request,'navbar.html', {'all_items':all_items})

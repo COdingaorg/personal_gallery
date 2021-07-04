@@ -9,7 +9,12 @@
     <p class="text_p">Filter by Location or category</p>
   </div>
 </div>
-
+<!--categories-->
+<div class="cat_buttons">
+{%for loc in locations%}
+<button class="btn-outline-success">{{loc.location_name}}</button>
+{%endfor%}
+</div>
 <!--images looped-->
 <div id="row2">
   <!--add loop here-->

@@ -22,10 +22,14 @@
             Image Categories
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            {%if all_items%}
+              {%for cat in all_items%}
+              <a class="dropdown-item" href="#">{{cat.category_name}}</a>
+              <div class="dropdown-divider"></div>
+              {%endfor%}
+            {%else%}
+            <a href="{% url 'gallery_disp' %}">Open Gallery Page To view</a>
+            {%endif%}
           </div>
         </li>
         <li class="nav-item">
