@@ -25,7 +25,7 @@ A searches for image categories
 # Homepage
 <img src='gallery/static/images/homepage_slide.png' alt='Homepage Slide'>
 
-<img src='gallery/static/images/homepagefooter.png.png' alt='Homepage Footer'>
+<img src='gallery/static/images/homepagefooter.png' alt='Homepage Footer'>
 
 # Gallery pages
 <img src='gallery/static/images/gallery_page.png' alt='Gallery page'>
