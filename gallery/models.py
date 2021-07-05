@@ -1,5 +1,3 @@
-from django.core import exceptions
-from django.core.checks.messages import Error
 from django.db import models
 import datetime as dt
 

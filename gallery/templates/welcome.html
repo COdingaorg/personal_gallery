@@ -1,7 +1,14 @@
 {%extends 'base.html'%}
 {%load bootstrap_icons %}
+{% block extra_js%}
+<script src="http://malsup.github.com/jquery.form.js"></script>
+{% endblock %}
 
 {%block content%}
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div><!-- /.modal -->
+
 <div class="banner text-center">
   <div id="bannerContent">
     <h5 class="subtitle">{%bs_icon 'dash'%}Best Image Collection {%bs_icon 'dash'%}</h5>
@@ -13,12 +20,14 @@
   <div id="row1">
     <div class="card short col-md-4">
       <div class="card-image">
-        <a href="{% url 'single_image' image1.id %}">
+        <a href="{% url 'single_image' image1.id %}"></a>
+        <a class="fa fa-pencil" data-toggle="modal" href="{% url 'single_image' image1.id %}" data-target="#modal"
+          title="edit item" data-tooltip>
           <img src="{{image1.image_url.url}}" alt="image Gallery" width="100%">
         </a>
       </div>
-      <h3 class="card-header text-center bg-light">Blue Waters</h3>
-      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+      <h3 class="card-header text-center bg-light">{{image1.image_name}}</h3>
+      <p class="card-text text-center">{{image1.image_description}}</p>
     </div>
     <div class="card long col-md-4">
       <div class="card-image">
@@ -26,8 +35,8 @@
           <img src="{{image2.image_url.url}}" alt="image Gallery" width="100%">
         </a>
       </div>
-      <h3 class="card-header text-center">Blue Waters</h3>
-      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+      <h3 class="card-header text-center">{{image2.image_name}}</h3>
+      <p class="card-text text-center">{{image2.image_description}}</p>
     </div>
     <div class="card short col-md-4">
       <div class="card-image">
@@ -35,8 +44,8 @@
           <img src="{{image3.image_url.url}}" alt="image Gallery" width="100%">
         </a>
       </div>
-      <h3 class="card-header text-center">Blue Waters</h3>
-      <p class="card-text text-center">Clear Blue waters, with cool breeze is an awesome view</p>
+      <h3 class="card-header text-center">{{image3.image_name}}</h3>
+      <p class="card-text text-center">{{image3.image_description}}</p>
     </div>
   </div>
   <div id="row2">
@@ -75,12 +84,5 @@
   <p class="subtitle">BEST COLLECTION</p>
 </div>
 
-<script type="text/javascript" src="">
-$(document).ready(function(){
-  $('#create-book').modalForm({
-    formURL:"{% url 'create_book' %}"
-  });
-});
-</script>
 
 {%endblock%}

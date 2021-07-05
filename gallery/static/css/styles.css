@@ -131,6 +131,9 @@ div.card-image{
 .single_image{
   height: 80vh;
 }
+.modal_body{
+  z-index: 3;
+}
 .single_image>.card-image{
   overflow: hidden;
   border: 1px solid black;

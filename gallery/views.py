@@ -1,9 +1,27 @@
-from os import register_at_fork
 from django.views.generic import UpdateView, ListView
 import pyperclip
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 from django.http.response import Http404
 from django.shortcuts import render
 from .models import Image, Categories, Location
+
+# modal window settings
+class ModalListView(ListView):
+  model = Image
+  template_name = 'welcome.html'
+
+  def get_queryset(self):
+      return Image.objects.all()
+
+class ModalUpdateView(UpdateView):
+  model = Image
+  template_name = 'single_img.html'
+
+  def dispatch(self, *args, **kwargs):
+    self.id = kwargs['pk']
+    return super(ModalUpdateView, self).dispatch(*args, **kwargs)
+
 
 # Create your views here.
 def index(request):
