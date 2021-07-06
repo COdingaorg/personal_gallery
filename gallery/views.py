@@ -1,9 +1,11 @@
+from django.core.mail import message
 from django.views.generic import UpdateView, ListView
 from django.http.response import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Image, Categories, Location, NesletterSubscribers
 import datetime as dt
 from .forms import NewsletterForm
+from .emails import send_welcome_email
 
 # modal window settings
 class ModalListView(ListView):
@@ -93,11 +95,13 @@ def images_today(request):
       email = form.cleaned_data['email']
       recipient = NesletterSubscribers(sub_name = name, email = email)
       recipient.save()
+      send_welcome_email(recipient.sub_name,recipient.email)
+      message = f'Welcome {name}. Email sent succesfully'
       HttpResponseRedirect('images_today')
     else:
       form = NewsletterForm()
     
-    return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations, 'letterForm':form})
+    return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations, 'letterForm':form, 'message':message})
   
   else:
     return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations})

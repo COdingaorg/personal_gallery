@@ -52,7 +52,9 @@
       {%csrf_token%}
       {{letterForm}}
       <p class="alert-info text-center col-md-4 p-2">Get informed when we create a new post.</p>
+      
       <input type="submit" value='Subscribe' class="btn btn-warning">
     </form>
+    <h3 class="alert-info">{{message}}</h3> 
   </div>
 {%endblock%}
