@@ -6,6 +6,7 @@ from .models import Image, Categories, Location, NesletterSubscribers
 import datetime as dt
 from .forms import NewsletterForm
 from .emails import send_welcome_email
+from django.contrib.auth.decorators import login_required
 
 # modal window settings
 class ModalListView(ListView):
@@ -55,6 +56,7 @@ def gallery_disp(request):
     locations = Location.objects.all()
     return render (request, 'gallery_display.html', {'message':message,'title':title, 'images':images, 'categories':categories, 'locations':locations})
 
+@login_required(login_url='accounts/login')
 def single_image(request, image_id):
   try:
     single_image = Image.objects.get(id=image_id)
