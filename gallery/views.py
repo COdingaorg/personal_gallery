@@ -1,7 +1,7 @@
 from django.views.generic import UpdateView, ListView
-from django.http.response import Http404
+from django.http.response import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .models import Image, Categories, Location
+from .models import Image, Categories, Location, NesletterSubscribers
 import datetime as dt
 from .forms import NewsletterForm
 
@@ -89,7 +89,11 @@ def images_today(request):
   if request.method == 'POST':
     form = NewsletterForm(request.POST)
     if form.is_valid():
-      print('valid')
+      name = form.cleaned_data['user_name']
+      email = form.cleaned_data['email']
+      recipient = NesletterSubscribers(sub_name = name, email = email)
+      recipient.save()
+      HttpResponseRedirect('images_today')
     else:
       form = NewsletterForm()
     
