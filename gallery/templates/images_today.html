@@ -6,7 +6,7 @@
   <div id="bannerContent2">
     <h5 class="subtitle"></h5>
     <h2 class="main_title">Images on {{today}}</h2>
-    <p class="text_p">___________________________</p>
+    <p class="text_p">__________________________________________</p>
   </div>
 </div>
 <!--categories-->
@@ -46,4 +46,13 @@
   {%else%}
     <h2 class="text-center">No Images Added Today</h2>
   {%endif%}
+
+  <div class='container-fluid'>
+    <form action="" method="post">
+      {%csrf_token%}
+      {{letterForm}}
+      <p class="alert-info text-center col-md-4 p-2">Get informed when we create a new post.</p>
+      <input type="submit" value='Subscribe' class="btn btn-warning">
+    </form>
+  </div>
 {%endblock%}

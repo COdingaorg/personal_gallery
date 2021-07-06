@@ -1,11 +1,9 @@
 from django.views.generic import UpdateView, ListView
-import pyperclip
-from django.http import HttpResponse
-from django.template.loader import render_to_string
 from django.http.response import Http404
 from django.shortcuts import render
 from .models import Image, Categories, Location
 import datetime as dt
+from .forms import NewsletterForm
 
 # modal window settings
 class ModalListView(ListView):
@@ -87,4 +85,15 @@ def images_today(request):
   images_today = Image.images_today()
   today = dt.date.today()
   locations = Location.objects.all()
-  return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations})
+
+  if request.method == 'POST':
+    form = NewsletterForm(request.POST)
+    if form.is_valid():
+      print('valid')
+    else:
+      form = NewsletterForm()
+    
+    return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations, 'letterForm':form})
+  
+  else:
+    return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations})
