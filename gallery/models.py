@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from django.db.models.fields import CharField, EmailField
 
 from django.http.response import Http404
 
@@ -70,3 +71,7 @@ class Image(models.Model):
     today = dt.date.today()
     results = cls.objects.filter(date_taken = today)
     return results
+
+class NesletterSubscribers(models.Model):
+  sub_name = models.CharField(max_length=100)
+  email = models.EmailField()
