@@ -64,3 +64,9 @@ class Image(models.Model):
     loc_id = location_nm.id
     results = cls.objects.filter(location_taken = loc_id)
     return results
+
+  @classmethod
+  def images_today(cls):
+    today = dt.date.today()
+    results = cls.objects.filter(date_taken = today)
+    return results

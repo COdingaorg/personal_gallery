@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from django.http.response import Http404
 from django.shortcuts import render
 from .models import Image, Categories, Location
+import datetime as dt
 
 # modal window settings
 class ModalListView(ListView):
@@ -81,3 +82,9 @@ def search_images(request):
   else:
     message = 'You have not searched for anything'
     return render(request, 'search_results.html', {'message':message, 'title':title})
+
+def images_today(request):
+  images_today = Image.images_today()
+  today = dt.date.today()
+  locations = Location.objects.all()
+  return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations})
