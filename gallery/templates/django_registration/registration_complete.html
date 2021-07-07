@@ -1,0 +1,10 @@
+{%extends 'django_registration/base.html'%}
+{% load bootstrap3 %}
+{%block content%}
+
+<div class="text-center" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+  <p>Account Created Successfully</p>
+  <h2><a href="{% url 'login'%}">Login</a></h2>
+</div>
+
+{%endblock%}

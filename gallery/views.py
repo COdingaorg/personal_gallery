@@ -107,3 +107,7 @@ def images_today(request):
   
   else:
     return render(request, 'images_today.html', {'images':images_today, 'today':today, 'locations':locations})
+
+def profile(request):
+  user_prof = 'user_prof'
+  return render(request, 'profile.html', {'user_prof': user_prof})
