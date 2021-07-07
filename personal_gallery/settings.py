@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'django_bootstrap_icons',
     'bootstrap_modal_forms',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
